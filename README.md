@@ -33,16 +33,20 @@ Step 5 : Determine the output  function as
 Step 6: Test the network for accuracy<br>
 Step 7: Plot the Input space and Hidden space of RBF NN for XOR classification.
 
-<H3>PROGRAM:</H3>
+## PROGRAM:
 ```
 import numpy as np
-import matplotlib.pyplot as plT
+import matplotlib.pyplot as plt
+
 def gaussian_rbf(x, landmark, gamma=1):
     return np.exp(-gamma * np.linalg.norm(x - landmark)**2)
+
 def end_to_end(X1, X2, ys, mu1, mu2):
     from_1 = [gaussian_rbf(np.array([X1[i], X2[i]]), mu1) for i in range(len(X1))]
     from_2 = [gaussian_rbf(np.array([X1[i], X2[i]]), mu2) for i in range(len(X1))]
+
     plt.figure(figsize=(13, 5))
+
     plt.subplot(1, 2, 1)
     plt.scatter((X1[0], X1[3]), (X2[0], X2[3]), label="Class_0")
     plt.scatter((X1[1], X1[2]), (X2[1], X2[2]), label="Class_1")
@@ -50,6 +54,7 @@ def end_to_end(X1, X2, ys, mu1, mu2):
     plt.ylabel("$X2$", fontsize=15)
     plt.title("Xor: Linearly Inseparable", fontsize=15)
     plt.legend()
+
     plt.subplot(1, 2, 2)
     plt.scatter(from_1[0], from_2[0], label="Class_0")
     plt.scatter(from_1[1], from_2[1], label="Class_1")
@@ -102,7 +107,7 @@ print(f"Input:{np.array([1, 0])}, Predicted: {predict_matrix(np.array([1, 0]), w
 print(f"Input:{np.array([1, 1])}, Predicted: {predict_matrix(np.array([1, 1]), w)}")
 ```
 
-<H3>OUTPUT:</H3>
+## OUTPUT:
 ![image](https://github.com/user-attachments/assets/a983d06a-a5a4-43f5-be2c-1cd3ddc3b04d)
 
 
